@@ -6,10 +6,6 @@ export default function MainNavigation() {
   const value = useContext(AuthContext);
   return (
     <header className='main-navigation'>
-      <div className='main-navigation__logo'>
-        <h1>أحداث حسوب</h1>
-        
-      </div>
       <div className='main-navigation__items'>
         <ul>
           {!value.token && (
@@ -31,6 +27,9 @@ export default function MainNavigation() {
             </>
           )}
         </ul>
+      </div>
+      <div className='main-navigation__logo'>
+        <h1>أحداث حسوب</h1>
       </div>
     </header>
   );

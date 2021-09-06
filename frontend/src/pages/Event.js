@@ -202,7 +202,7 @@ export default function EventsPage() {
 
   return (
     <React.Fragment>
-      <Error error={alert}/>
+      {value.token && <Error error={alert}/>}
       {(creating || selectedEvent) && <Backdrop />}
       {creating && (
         <Modal
