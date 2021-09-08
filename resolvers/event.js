@@ -18,6 +18,7 @@ const eventResolver = {
   },
   Mutation: {
     createEvent: async (_, args, context) => {
+      // TODO: Authentication error should be in a middleware.
       if (!context.user) {
         throw new Error('أنت غير مسجل دخول!!');
       }
@@ -40,6 +41,7 @@ const eventResolver = {
         const creator = await User.findById(context.user._id);
 
         if (!creator) {
+          // TODO: Check the message.
           throw new Error('صاحب هذا الحدث غير');
         }
         creator.createdEvents.push(event);

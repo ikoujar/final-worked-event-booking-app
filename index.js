@@ -12,6 +12,7 @@ const _ = require('lodash');
 const mongoose = require('mongoose');
 const User = require('./models/user');
 const jwt = require('jsonwebtoken');
+// TODO: JWT Secret should be within (.env).
 const JWT_SECRET = 'f1BtnWgD3VKY';
 
 async function startApolloServer(typeDefs, authResolver, bookingResolver, eventResolver) {
@@ -59,10 +60,11 @@ async function startApolloServer(typeDefs, authResolver, bookingResolver, eventR
       path: server.graphqlPath 
     }
   );
+  // TODO: App port should be within (.env)
   await new Promise(resolve => httpServer.listen({ port: 4000 }, resolve));
 
   console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
-  
+  // TODO: Database url should be within (.env)
   mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.cnfkb.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`,
     { useNewUrlParser: true, useUnifiedTopology: true },
     err => {

@@ -18,6 +18,7 @@ const authResolver = {
                 email: user.email,
                 id: user._id,
             }
+            // TODO: secretOrPrivateKey should be within (.env) file.
             return { userId: user._id, token: jwt.sign(userForToken, 'f1BtnWgD3VKY') }
         },
         createUser: async (_, args) => {

@@ -25,6 +25,7 @@ const AuthPage = (props) => {
       return;
     }
 
+    // TODO: Isn't better to move all queries to a separated file.
     let requestQuery = {
       query: `
             mutation Login($email: String!, $password: String!) {

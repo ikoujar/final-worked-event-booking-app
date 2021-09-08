@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+// TODO: It can be as subsocument inside the user model.
 const bookingSchema = new Schema(
   {
     event: {

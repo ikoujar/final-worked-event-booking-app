@@ -20,6 +20,7 @@ export default function EventsPage() {
   const dateEl = useRef(null);
   const descriptionEl = useRef(null);
   const value = useContext(AuthContext);
+  // TODO: Move it to .env file for deployment sake.
   const endpoint = 'http://localhost:4000/graphql';
   const headers = {
     'Content-Type': 'application/json',
@@ -72,6 +73,8 @@ export default function EventsPage() {
       },
     };
 
+    // TODO: We should consider using offical appolo client instead of rewriting it with fetch.
+    // TODO: Check the documentation https://www.apollographql.com/docs/react/data/queries/
     fetch(endpoint, {
       method: 'POST',
       body: JSON.stringify(requestQuery),
@@ -196,10 +199,12 @@ export default function EventsPage() {
       setSelectedEvent(null);
   };
 
+  // TODO: Please consider solving this issue instead of ignorance by eslint-disable.
   useEffect(() => {
     fetchEvents();
   }, []); // eslint-disable-line
 
+  // 
   return (
     <React.Fragment>
       {value.token && <Error error={alert}/>}

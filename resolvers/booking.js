@@ -5,6 +5,7 @@ const { transformBooking, transformEvent } = require('./merge');
 const bookingResolver = {
   Query: {
     bookings: async (_, __, context) => {
+      // TODO: Authentication error should be in a middleware.
       if (!context.user) {
         throw new Error('أنت غير مسجل دخول!!');
       }
@@ -20,6 +21,7 @@ const bookingResolver = {
   },
   Mutation: {
     bookEvent: async (_, args, context) => {
+      // TODO: Authentication error should be in a middleware.
       if (!context.user) {
         throw new Error('أنت غير مسجل دخول!!');
       }
@@ -36,6 +38,7 @@ const bookingResolver = {
       return transformBooking(result);
     },
     cancelBooking: async (_, args, context) => {
+      // TODO: Authentication error should be in a middleware.
       if (!context.user) {
         throw new Error('أنت غير مسجل دخول!!');
       }
